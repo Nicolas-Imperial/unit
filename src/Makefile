@@ -193,8 +193,8 @@ GLOBAL_CC_TEST_LIBS=$(CC_TEST_LIBS)
 GLOBAL_CXX_TEST_LIBS=$(CXX_TEST_LIBS)
 GLOBAL_CC_PKG=$(call pkg-config,$(CC_PKG),libs-only-l,CC_PKG_)
 GLOBAL_CXX_PKG=$(call pkg-config,$(CXX_PKG),libs-only-l,CXX_PKG_)
-GLOBAL_CC_TEST_PKG=$(call pkg-config,$(CC_PKG_TEST),libs-only-l,CC_TEST_PKG_)
-GLOBAL_CXX_TEST_PKG=$(call pkg-config,$(CXX_PKG_TEST),libs-only-l,CXX_TEST_PKG_)
+GLOBAL_CC_TEST_PKG=$(call pkg-config,$(CC_TEST_PKG),libs-only-l,CC_TEST_PKG_)
+GLOBAL_CXX_TEST_PKG=$(call pkg-config,$(CXX_TEST_PKG),libs-only-l,CXX_TEST_PKG_)
 
 ## Gives all library switches of project $1 of type $2 (bin|lib|test) in language $3
 ## pkg-config provided switches from _pkg variable
@@ -328,12 +328,13 @@ dist: submake
 	mkdir -p $(distdir)
 	cp Makefile $(distdir)
 	cp Makefile.in $(distdir)
-	$(if $(strip $(bincc_package:%=bincc_%_export)),cp $(sort $(foreach var,$(bincc_package:%=bincc_%_export),$(call $(var)))) $(distdir),)
-	$(if $(strip $(bincxx_package:%=bincxx_%_export)),cp $(sort $(foreach var,$(bincxx_package:%=bincxx_%_export),$(call $(var)))) $(distdir),)
-	$(if $(strip $(libcc_package:%=libcc_%_export)),cp $(sort $(foreach var,$(libcc_package:%=libcc_%_export),$(call $(var)))) $(distdir),)
-	$(if $(strip $(libcxx_package:%=libcxx_%_export)),cp $(sort $(foreach var,$(libcxx_package:%=libcxx_%_export),$(call $(var)))) $(distdir),)
-	$(if $(strip $(testcc_package:%=testcc_%_export)),cp $(sort $(foreach var,$(testcc_package:%=testcc_%_export),$(call $(var)))) $(distdir),)
-	$(if $(strip $(testcxx_package:%=testcxx_%_export)),cp $(sort $(foreach var,$(testcxx_package:%=testcxx_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(bincc_package:%=bin_%_export)),cp $(sort $(foreach var,$(bincc_package:%=bin_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(bincxx_package:%=bin_%_export)),cp $(sort $(foreach var,$(bincxx_package:%=bin_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(lib_package:%=lib_%_export)),cp $(sort $(foreach var,$(lib_package:%=lib_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(testcc_package:%=test_%_export)),cp $(sort $(foreach var,$(testcc_package:%=test_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(testcxx_package:%=test_%_export)),cp $(sort $(foreach var,$(testcxx_package:%=test_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(sharedcc_package:%=shared_%_export)),cp $(sort $(foreach var,$(sharedcc_package:%=shared_%_export),$(call $(var)))) $(distdir),)
+	$(if $(strip $(sharedcxx_package:%=shared_%_export)),cp $(sort $(foreach var,$(sharedcxx_package:%=shared_%_export),$(call $(var)))) $(distdir),)
         
 clean: submake
 	$(RM) $(cc_object) $(foreach var,$(cc_object),$(var:%.o=%.d)) $(foreach var,$(cc_object),$(var:%.o=%.e))
