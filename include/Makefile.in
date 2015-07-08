@@ -1,0 +1,5 @@
+## All files to include in a distribution package
+attach = 
+
+## Further directories to follow
+subdirs = pelib

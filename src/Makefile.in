@@ -1,0 +1,100 @@
+subdirs = 
+
+CONFIG = RELEASE
+
+## C global parameters
+CFLAGS_BASE =  
+CFLAGS_PRIVATE = -I../include 
+CFLAGS_CONFIG_RELEASE = -O3 -DNDEBUG
+CFLAGS_CONFIG_DEBUG = -g -O0 -DDEBUG=1
+CFLAGS_SHARED = -fPIC -DPIC
+CC_PKG = 
+CC_DEPS =
+CC_LIBS =
+CC_LDFLAGS =
+CC_TEST_LIBS = $(CC_LIBS) -lunit -lrt
+CC_TEST_DEPS =$(CC_DEPS) libunit.a
+CC_TEST_LDFLAGS =
+
+## C++ global parameters
+CXXFLAGS_BASE = 
+CXXFLAGS_PRIVATE = -I../include -Wall
+CXXFLAGS_CONFIG_RELEASE = -O3 -DNDEBUG
+CXXFLAGS_CONFIG_DEBUG = -g -O0 -DDEBUG=1
+CXXFLAGS_SHARED = -fPIC -DPIC
+CXX_PKG = 
+CXX_PKG_igraph_version = >= 0.7.1
+CXX_DEPS =
+CXX_LIBS = 
+CXX_LDFLAGS =
+CXX_TEST_LIBS = $(CXX_LIBS) -lunit -lrt
+CXX_TEST_DEPS = $(CXX_DEPS) libunit.a
+CXX_TEST_LDFLAGS =
+
+## executables
+bincxx_package =
+
+bincxx__src = 
+bincc__src = 
+bin__export = $(bincxx__embed) $(bincxx__src) $(bincc__src)
+bin__deps = 
+bin__libs = 
+bin__pkg = 
+bin__ldflags = 
+bin__static = 0
+
+## In order:
+## Internal classes: exception, data structures, structures and collection parsers and output base classes, container
+## Parser base classes: containers and data structures
+## Output base classes: containers and data structures
+## Data structure classes: Scalar, Vector, Matrix and Set
+## Ampl hierarchy base: data parsers and output
+## Ampl input format classes: base class, data structure base class, parser and output data structure classes
+## Ampl output format classes: base class, data structure base class, parser and output data structure classes
+## Cpp hierarchy base: data output only
+## Cpp format classes: base class, data structure base class, output data structure classes; no parser because of lack of cpp parser base class
+
+## dynamic library packages and their sources
+sharedcxx_package = 
+
+sharedcxx__src = 
+sharedcc__src = 
+shared__export = $(sharedcxx__embed) $(sharedcxx__src)
+shared__libs = 
+shared__ldflags = 
+shared__deps =
+shared__pkg = 
+shared__pkg_url = http://www.ida.liu.se/~nicme26
+shared__pkg_ld = 
+shared__pkg_libs = 
+shared__pkg_cxxflags = 
+shared__pkg_description = General research utility library used in PELAB
+shared__embed = 
+
+## static library packages and their sources
+lib_package = unit
+
+libcxx_unit_src = 
+libcc_unit_src = unit.c
+lib_unit_export = $(lib_unit_embed) $(libcc_unit_src) $(libcxx_unit_src)
+lib_unit_deps =
+
+## test packages and their sources
+testcxx_package = 
+testcc_package = 
+
+testcxx__src = 
+testcc__src =  
+test__export = $(testcxx_parser_embed) $(testcxx_parser_src) $(tesstcc__src)
+test__deps = 
+test__libs = 
+test__pkg = 
+test__ldflags = 
+test__embed = 
+
+## Uncomment this to run target "first" before any target explicetly called
+#FIRST = first
+
+first:
+	@# Display some basic variable content here and call "make all"
+	@/bin/false
