@@ -32,6 +32,8 @@
 #define assert_different_ptr(a ,b) printf("[%s:%s:%d] Assert %s != %s ... ", __FILE__, __FUNCTION__, __LINE__, #a, #b); if(a != b) { printf("OK.\n"); } else { printf("Failed (%z, %z).\n", a, b); assert_fail(); } assert_add();
 #define assert_equals_ptrdiff(a ,b) printf("[%s:%s:%d] Assert %s == %s ... ", __FILE__, __FUNCTION__, __LINE__, #a, #b); if(a == b) { printf("OK.\n"); } else { printf("Failed (%t, %t).\n", a, b); assert_fail(); } assert_add();
 #define assert_different_ptrdiff(a ,b) printf("[%s:%s:%d] Assert %s != %s ... ", __FILE__, __FUNCTION__, __LINE__, #a, #b); if(a != b) { printf("OK.\n"); } else { printf("Failed (%t, %t).\n", a, b); assert_fail(); } assert_add();
+#define assert_equals_size_t(a ,b) printf("[%s:%s:%d] Assert %s == %s ... ", __FILE__, __FUNCTION__, __LINE__, #a, #b); if(a == b) { printf("OK.\n"); } else { printf("Failed (%zu, %zu).\n", a, b); assert_fail(); } assert_add();
+#define assert_different_size_t(a ,b) printf("[%s:%s:%d] Assert %s != %s ... ", __FILE__, __FUNCTION__, __LINE__, #a, #b); if(a != b) { printf("OK.\n"); } else { printf("Failed (%zu, %zu).\n", a, b); assert_fail(); } assert_add();
 #define assert_true(a) printf("[%s:%s:%d] Assert %s == TRUE ... ", __FILE__, __FUNCTION__, __LINE__, #a); if(a) { printf("OK.\n"); } else { printf("Failed.\n"); assert_fail(); } assert_add();
 #define assert_false(a) printf("[%s:%s:%d] Assert %s == FALSE ... ", __FILE__, __FUNCTION__, __LINE__, #a); if(!a) { printf("OK.\n"); } else { printf("Failed.\n"); assert_fail(); } assert_add();
 #define assert(a) assert_true(a)
