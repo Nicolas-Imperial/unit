@@ -62,6 +62,8 @@ bin__pkg =
 bin__ldflags = 
 bin__static = 0
 
+attach = 
+
 ## In order:
 ## Internal classes: exception, data structures, structures and collection parsers and output base classes, container
 ## Parser base classes: containers and data structures
