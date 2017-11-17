@@ -76,7 +76,12 @@ attach =
 ## Cpp format classes: base class, data structure base class, output data structure classes; no parser because of lack of cpp parser base class
 
 ## dynamic library packages and their sources
-sharedcxx_package = 
+sharedcc_package = unit
+
+sharedcxx_unit_src = 
+sharedcc_unit_src = unit.c
+shared_unit_export = $(shared_unit_embed) $(sharedcc_unit_src) $(sharedcxx_unit_src)
+shared_unit_deps =
 
 sharedcxx__src = 
 sharedcc__src = 
